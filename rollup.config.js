@@ -4,6 +4,11 @@ import pkg from "./package.json";
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 const input = "src/index.ts";
 
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+];
+
 const plugins = [
   typescript({
     typescript: require("typescript"),
@@ -19,6 +24,7 @@ export default [
       sourcemap: true,
     },
     plugins,
+    external,
   },
   {
     input,
@@ -28,5 +34,6 @@ export default [
       sourcemap: true,
     },
     plugins,
+    external,
   },
 ];

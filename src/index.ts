@@ -13,3 +13,6 @@ const test = (): string => {
 };
 
 console.log(test);
+
+export * from "./components";
+export * from "./hooks";
